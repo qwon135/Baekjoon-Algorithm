@@ -1,3 +1,3 @@
-dp=[[0,0,0] for _ in range(2)]
-
-print(dp)
+a=[9,5,1,1,1,3]
+b=a[::-1]
+print(b)

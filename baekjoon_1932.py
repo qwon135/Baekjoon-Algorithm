@@ -1,15 +1,16 @@
-import sys
-input=sys.stdin.readline
-
 n=int(input())
-lst=list(map(int,input().split()))
 
-lst_set=list(set(lst))
-lst_set.sort()
+graph=[]
+for _ in range(n):
+    lst=list(map(int,input().split()))
+    graph.append(lst)
 
-lst_dic={lst_set[i] : i for i in range(len(lst_set))}
-
-print(lst_dic)
-
-for i in lst:
-    print(lst_dic[i],end=' ')
+for i in range(1,n):
+    for j in range(len(graph[i])):
+        if j==0:
+            graph[i][j]+=graph[i-1][j]
+        elif j==len(graph[i])-1:
+            graph[i][j]+=graph[i-1][-1]
+        else:
+            graph[i][j]+=max(graph[i-1][j],graph[i-1][j-1])
+print(max(graph[n-1]))
