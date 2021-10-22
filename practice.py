@@ -1,2 +1,3 @@
-t=(1,2,3)
-print(min(t))
+dp=[[0,0,0] for _ in range(2)]
+
+print(dp)
