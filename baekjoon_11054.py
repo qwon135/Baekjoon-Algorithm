@@ -21,6 +21,5 @@ dp_reverse=dp_reverse[::-1]
 result=0
 for i in range(n):
     result=max(result,dp[i]+dp_reverse[i])
-print(dp)
-print(dp_reverse)
+
 print(result-1)
