@@ -1,10 +1,15 @@
-def binary_search(array,target,start,end):
-    while start<=end:
-        mid=(start+end)//2
-        if array[mid]==target:
-            return mid
-        elif array[mid]>target:
-            end=mid-1
-        else:
-            start=mid+1
-    return None
+import sys; r = sys.stdin.readline
+
+def sol():
+    N = int(r())
+    dis = [*map(int, r().split())]
+    cost = [*map(int, r().split())]
+    s, m = 0, 1e9
+    for d, c in zip(dis, cost[:-1]):
+        if c < m:
+            m = c
+        s += d * m
+    print(s)
+
+if __name__ == "__main__":
+    sol()
