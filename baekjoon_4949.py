@@ -5,25 +5,33 @@ while True:
     x=input().rstrip()
     if x=='.':
         break
-    stack_1=0
-    stack_2=0
-    for i in range(len(x)):
-        if x[i]=='(':
-            stack_1+=1
-        elif x[i]==')':
-            stack_1-=1
-            if stack_1<0:
-                print('NO')
+    stack=[]
+    result=True
+    for i in x:
+        if i=='[' or i=='(':
+            stack.append(i)
+        elif i==']':
+            if not stack:
+                result=False
                 break
-        elif x[i]=='[':
-            stack_2+=1
-        elif x[i]==']':
-            stack_2-=1
-            if stack_2<0:
-                print('NO')
+            if stack[-1]=='[':
+                stack.pop()
+            else:
+                result==False
                 break
-    if stack_1>=0 and stack_2>=0:   
-        if stack_1==0 and stack_2==0:
-            print('YES')
-        elif stack_1>0 or stack_2>0:
-            print('NO')
+        elif i==')':
+            if not stack:
+                result=False
+                break
+            if stack[-1]=='(':
+                stack.pop()
+            else:
+                result==False
+                break
+    if result and not stack:
+        print('yes')
+    else:
+        print('no')
+            
+
+
