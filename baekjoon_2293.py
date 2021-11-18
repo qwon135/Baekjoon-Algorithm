@@ -1,12 +1,16 @@
-import sys
-input=sys.stdin.readline
+n, k = map(int, input().split())
+coins = []
+for _ in range(n):
+    x = int(input())
+    if x <= k:
+        coins.append(x)
 
-n=int(input())
-lst=list(input().rstrip() for _ in range(n))
+dp = [0]*(k+1)
+dp[0] = 1
 
-lst=list(set(lst))
-lst.sort()
-lst.sort(key=len)
-
-for i in lst:
-    print(i)
+for coin in coins:
+    for j in range(k):
+        if j+coin > k:
+            break
+        dp[j+coin] += dp[j]
+print(dp[-1])
